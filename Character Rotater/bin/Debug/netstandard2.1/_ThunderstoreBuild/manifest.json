@@ -1,9 +1,9 @@
 {
   "name": "CRotater",
-  "version_number": "1.0.0",
+  "version_number": "1.0.1",
   "website_url": "https://store.steampowered.com/app/2768430/ATLYSS/",
   "description": "Rotate ur character with ease!",
   "dependencies": [
-       "BepInEx-BepInExPack-5.4.2100"
+       "BepInEx-BepInExPack-5.4.2100","Catman232-Homebrewery-4.1.0"
   ]
 }

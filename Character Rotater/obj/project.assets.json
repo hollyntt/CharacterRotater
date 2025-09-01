@@ -59,6 +59,15 @@
           "build/BepInEx.Core.targets": {}
         }
       },
+      "Catman232-Homebrewery/4.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Homebrewery.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Homebrewery.dll": {}
+        }
+      },
       "HarmonyX/2.7.0": {
         "type": "package",
         "dependencies": {
@@ -780,6 +789,17 @@
         "lib/net35/_._",
         "lib/netstandard2.0/_._",
         "tools/Install.ps1"
+      ]
+    },
+    "Catman232-Homebrewery/4.1.0": {
+      "sha512": "FpcxjUaVvHgbFaOD9Xol8oibcdYf38ecNf5HM26RldyxeEBylUlRnJGRo6Wf7tl+9Wruj5dQfhi7TtYJJ3YvJA==",
+      "type": "package",
+      "path": "catman232-homebrewery/4.1.0",
+      "files": [
+        ".nupkg.metadata",
+        "catman232-homebrewery.4.1.0.nupkg.sha512",
+        "catman232-homebrewery.nuspec",
+        "lib/netstandard2.0/Homebrewery.dll"
       ]
     },
     "HarmonyX/2.7.0": {
@@ -2782,6 +2802,7 @@
       "BepInEx.Analyzers >= 1.*",
       "BepInEx.AssemblyPublicizer.MSBuild >= 0.4.2",
       "BepInEx.Core >= 5.4.*",
+      "Catman232-Homebrewery >= 4.1.0",
       "UnityEngine.Modules >= 2022.3.62"
     ]
   },
@@ -2844,6 +2865,10 @@
           "BepInEx.Core": {
             "target": "Package",
             "version": "[5.4.*, )"
+          },
+          "Catman232-Homebrewery": {
+            "target": "Package",
+            "version": "[4.1.0, )"
           },
           "UnityEngine.Modules": {
             "suppressParent": "All",
