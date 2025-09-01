@@ -184,3 +184,4 @@ F:\Documents\CODE\Ours\Character Rotater\Character Rotater\obj\Debug\netstandard
 F:\Documents\CODE\Ours\Character Rotater\Character Rotater\obj\Debug\netstandard2.1\Character Rotater.sourcelink.json
 F:\Documents\CODE\Ours\Character Rotater\Character Rotater\obj\Debug\netstandard2.1\Characte.CB0F015A.Up2Date
 F:\Documents\CODE\Ours\Character Rotater\Character Rotater\obj\Debug\netstandard2.1\Character Rotater.dll
+F:\Documents\CODE\Ours\Character Rotater\Character Rotater\bin\Debug\netstandard2.1\Homebrewery.dll
