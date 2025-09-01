@@ -29,4 +29,20 @@ The main command is `/rotator`, which can be shortened to `/rot`.
 - **Combine arguments:** `/rot set x-10 y45` (Subtracts 10 from X, sets Y to 45)
 
 ## Configuration
-... (rest of the README remains the same) ...
+### 1. General
+| Setting      | Default  | Description                                                                 |
+|--------------|----------|-----------------------------------------------------------------------------|
+| `Enabled`    | Disabled | The main switch to turn the entire rotator mod on or off.                       |
+| `StaticMode` | Disabled | If disabled, sliders control spin **speed**. If enabled, sliders control fixed **angle**. |
+
+### 2. Controls
+| Setting         | Default | Description                                                                 |
+|-----------------|---------|-----------------------------------------------------------------------------|
+| `ToggleMenuKey` | Insert  | The key used to open and close the mod's in-game settings menu.                 |
+
+### 3. Rotation
+| Setting  | Default | Description                                                                 |
+|----------|---------|-----------------------------------------------------------------------------|
+| `ValueX` | 0       | Controls the X-axis. Represents **speed** in Rotating mode or **angle** in Static mode. |
+| `ValueY` | 100     | Controls the Y-axis. Represents **speed** in Rotating mode or **angle** in Static mode. |
+| `ValueZ` | 0       | Controls the Z-axis. Represents **speed** in Rotating mode or **angle** in Static mode. |
