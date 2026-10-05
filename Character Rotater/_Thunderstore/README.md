@@ -1,5 +1,9 @@
 # Character Rotator
 ### Rotate ur character with ease!
+
+> ## ⚠️ DEPRECATED - End of Support: Nov 30th, 2026
+> This mod stops working on **Nov 30th, 2026 at 00:00 UTC**. After that date it disables itself and **must be uninstalled**. See [End of Support](#end-of-support) below.
+
 ## Note: This mod will work in both singleplayer and multiplayer, and should also work if you are the host.
 
 ## Features
@@ -46,3 +50,21 @@ The main command is `/rotator`, which can be shortened to `/rot`.
 | `ValueX` | 0       | Controls the X-axis. Represents **speed** in Rotating mode or **angle** in Static mode. |
 | `ValueY` | 100     | Controls the Y-axis. Represents **speed** in Rotating mode or **angle** in Static mode. |
 | `ValueZ` | 0       | Controls the Z-axis. Represents **speed** in Rotating mode or **angle** in Static mode. |
+
+## End of Support
+This mod is **deprecated**. Support ends on **Nov 30th, 2026 at 00:00 UTC**.
+
+**What happens after that date:**
+- The mod unpatches itself, turns the rotator off, and no longer responds to `/rotator` or `/rot`.
+- An in-game notice appears telling you to uninstall the mod and notify the developer.
+- The BepInEx log states that the mod is deprecated and must be uninstalled to avoid conflicts in the future.
+
+**What you need to do:**
+1. **Uninstall the mod.** Delete the Character Rotater `.dll` from `BepInEx/plugins`.
+2. **Notify the developer.** Ping **@runeaphobia** in the [notification channel](https://discord.com/channels/1395549829962137690/1395556467083575447) of the Atlyss Modding Central server to confirm you've seen the notice.
+
+**Discord servers:**
+- [Atlyss Modding Central](https://discord.gg/CqdS3aZJZn)
+- [runem0dz](https://discord.gg/ePhX4Fb2we)
+
+The source is open on GitHub: [hollyntt/CharacterRotater](https://github.com/hollyntt/CharacterRotater)

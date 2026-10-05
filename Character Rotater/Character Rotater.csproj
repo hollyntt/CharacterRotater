@@ -4,7 +4,7 @@
         <BepInExPluginGuid>com.s0apy.CRotater</BepInExPluginGuid>
         <Authors>com.CRotater.3924</Authors>
         <Product>CRotater</Product>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <PackageId>CRotater.3924</PackageId>
     </PropertyGroup>
 
