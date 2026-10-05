@@ -1,4 +1,5 @@
-﻿using BepInEx;
+﻿using System;
+using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -13,7 +14,6 @@ namespace Character_Rotater
         internal static ManualLogSource Log;
         private readonly Harmony harmony = new Harmony(ModInfo.GUID);
 
-        // ... (All your ConfigEntry and property definitions remain exactly the same)
         #region Config Entries and Properties
         internal static ConfigEntry<bool> configRotatorEnabled;
         internal static ConfigEntry<bool> configIsStatic;
@@ -29,18 +29,56 @@ namespace Character_Rotater
         public static float rotationValueZ { get => (float)configRotationValueZ.Value; set => configRotationValueZ.Value = value; }
         #endregion
 
-        // ... (All your UI variables remain the same)
         #region UI Variables
         private bool showMenu = false;
         private Rect windowRect = new Rect(20, 20, 300, 250);
         private readonly int windowId = new System.Random().Next(1000, 9999);
         #endregion
 
+        #region End of Support
+        // Mod stops working at this exact moment (UTC). Change the date/time here.
+        internal static readonly DateTime EndOfSupportUtc = new DateTime(2026, 11, 30, 0, 0, 0, DateTimeKind.Utc);
+
+        private const string DevContact = "s0apy/runemodz (Discord)";
+        private const string DevUrl = "https://github.com/YOUR_NAME/YOUR_REPO"; // put your link here
+
+        internal static bool IsExpired => DateTime.UtcNow >= EndOfSupportUtc;
+
+        private bool expiredHandled = false;
+        private Rect noticeRect;
+
+        private void HandleExpiry()
+        {
+            expiredHandled = true;
+            configRotatorEnabled.Value = false;
+            harmony.UnpatchSelf();
+            Log.LogError($"[{ModInfo.NAME}] has reached End of Support and is disabled. Remove the mod and notify the developer ({DevContact}).");
+        }
+
+        private void DrawExpiryNotice(int id)
+        {
+            GUILayout.Label("This mod has reached its End of Support date and no longer functions.");
+            GUILayout.Space(8);
+            GUILayout.Label("Please REMOVE it (delete the Character Rotater .dll from BepInEx/plugins) " +
+                            "and let the developer know you've seen this notice.");
+            GUILayout.Space(8);
+            GUILayout.Label($"Contact: {DevContact}");
+            GUILayout.Space(8);
+
+            if (GUILayout.Button("Copy contact to clipboard"))
+                GUIUtility.systemCopyBuffer = DevContact;
+
+            if (GUILayout.Button("Open project page"))
+                Application.OpenURL(DevUrl);
+
+            GUI.DragWindow();
+        }
+        #endregion
+
         private void Awake()
         {
             Log = Logger;
-            
-            // ... (Your Config.Bind calls remain the same)
+
             #region Config Binding
             configRotatorEnabled = Config.Bind("1. General", "Enabled", false, "Enable or disable the character rotator.");
             configIsStatic = Config.Bind("1. General", "StaticMode", false, "If true, sets a static rotation angle. If false, character spins continuously.");
@@ -50,13 +88,19 @@ namespace Character_Rotater
             configRotationValueZ = Config.Bind("3. Rotation", "ValueZ", 0f, "Rotation Speed (if not static) or Angle (if static) on the Z-axis.");
             #endregion
 
-            // Harmony will now find and apply our new ChatPatch automatically.
+            // End of Support check: if expired, never patch the game.
+            if (IsExpired)
+            {
+                HandleExpiry();
+                return;
+            }
+
             harmony.PatchAll();
-            
-            Log.LogInfo($"[{ModInfo.NAME} v{ModInfo.VERSION}] has loaded! Press '{(KeyCode)configToggleMenuKey.Value}' to open the menu.");
+
+            int daysLeft = (int)(EndOfSupportUtc - DateTime.UtcNow).TotalDays;
+            Log.LogInfo($"[{ModInfo.NAME} v{ModInfo.VERSION}] loaded. Support ends in {daysLeft} day(s). Press '{configToggleMenuKey.Value}' to open the menu.");
         }
-        
-        // ... (The rest of the file - ResetSettingsToDefault, Update, OnGUI, DrawWindow - remains exactly the same)
+
         #region Public Methods and UI
         public static void ResetSettingsToDefault()
         {
@@ -68,14 +112,26 @@ namespace Character_Rotater
 
         private void Update()
         {
+            // Catches expiry that happens mid-session.
+            if (!expiredHandled && IsExpired) HandleExpiry();
+            if (expiredHandled) return;
+
             if (Input.GetKeyDown((KeyCode)configToggleMenuKey.Value))
             {
                 showMenu = !showMenu;
             }
         }
-        
+
         private void OnGUI()
         {
+            if (expiredHandled)
+            {
+                if (noticeRect.width == 0)
+                    noticeRect = new Rect((Screen.width - 420) / 2f, (Screen.height - 260) / 2f, 420, 260);
+                noticeRect = GUI.Window(windowId + 1, noticeRect, DrawExpiryNotice, "Character Rotater - End of Support");
+                return;
+            }
+
             if (!showMenu) return;
             windowRect = GUI.Window(windowId, windowRect, DrawWindow, "Character Rotator");
         }
@@ -84,9 +140,9 @@ namespace Character_Rotater
         {
             rotatorEnabled = GUILayout.Toggle(rotatorEnabled, "Enable Rotator");
             isStatic = GUILayout.Toggle(isStatic, "Static Mode");
-            GUILayout.Space(10); 
+            GUILayout.Space(10);
             string label = isStatic ? "Angle" : "Speed";
-            
+
             GUILayout.Label($"X-Axis {label}: {rotationValueX:F0}");
             rotationValueX = GUILayout.HorizontalSlider(rotationValueX, -360f, 360f);
 
@@ -96,13 +152,13 @@ namespace Character_Rotater
             GUILayout.Label($"Z-Axis {label}: {rotationValueZ:F0}");
             rotationValueZ = GUILayout.HorizontalSlider(rotationValueZ, -360f, 360f);
 
-            GUILayout.Space(10); 
-            
+            GUILayout.Space(10);
+
             if (GUILayout.Button("Reset to Defaults"))
             {
                 ResetSettingsToDefault();
             }
-            
+
             GUI.DragWindow();
         }
         #endregion
