@@ -6,6 +6,6 @@ namespace Character_Rotater
     {
         public const string GUID = "com.s0apy.CRotater";
         public const string NAME = "CRotater";
-        public const string VERSION = "1.0.2";
+        public const string VERSION = "1.0.3";
     }
 }

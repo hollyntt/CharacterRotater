@@ -4,7 +4,7 @@
         <BepInExPluginGuid>com.s0apy.CRotater</BepInExPluginGuid>
         <Authors>com.CRotater.3924</Authors>
         <Product>CRotater</Product>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
         <PackageId>CRotater.3924</PackageId>
     </PropertyGroup>
 
@@ -23,7 +23,7 @@
 
     <PropertyGroup>
         <!-- USE THE ACTUAL PATH ON YOUR COMPUTER -->
-        <AtlyssPath>F:\SteamLibrary\steamapps\common\ATLYSS</AtlyssPath>
+        <AtlyssPath>C:\Program Files (x86)\Steam\steamapps\common\ATLYSS</AtlyssPath>
         <AtlyssManaged>$(AtlyssPath)\ATLYSS_Data\Managed\</AtlyssManaged>
     </PropertyGroup>
 

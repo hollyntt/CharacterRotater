@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
-    ".NETStandard,Version=v2.1": {
+    "netstandard2.1": {
       "BepInEx.Analyzers/1.0.8": {
         "type": "package"
       },
@@ -2798,7 +2798,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETStandard,Version=v2.1": [
+    "netstandard2.1": [
       "BepInEx.Analyzers >= 1.*",
       "BepInEx.AssemblyPublicizer.MSBuild >= 0.4.2",
       "BepInEx.Core >= 5.4.*",
@@ -2807,20 +2807,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Richard\\.nuget\\packages\\": {}
+    "C:\\Users\\Hollyn\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.2",
     "restore": {
-      "projectUniqueName": "F:\\Documents\\CODE\\Ours\\Character Rotater\\Character Rotater\\Character Rotater.csproj",
+      "projectUniqueName": "D:\\Documents\\CODE\\Ours\\Character Rotater\\Character Rotater\\Character Rotater.csproj",
       "projectName": "CRotater.3924",
-      "projectPath": "F:\\Documents\\CODE\\Ours\\Character Rotater\\Character Rotater\\Character Rotater.csproj",
-      "packagesPath": "C:\\Users\\Richard\\.nuget\\packages\\",
-      "outputPath": "F:\\Documents\\CODE\\Ours\\Character Rotater\\Character Rotater\\obj\\",
+      "projectPath": "D:\\Documents\\CODE\\Ours\\Character Rotater\\Character Rotater\\Character Rotater.csproj",
+      "packagesPath": "C:\\Users\\Hollyn\\.nuget\\packages\\",
+      "outputPath": "D:\\Documents\\CODE\\Ours\\Character Rotater\\Character Rotater\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "F:\\Documents\\CODE\\Ours\\Character Rotater\\NuGet.Config",
-        "C:\\Users\\Richard\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "D:\\Documents\\CODE\\Ours\\Character Rotater\\NuGet.Config",
+        "C:\\Users\\Hollyn\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
@@ -2832,6 +2832,7 @@
       },
       "frameworks": {
         "netstandard2.1": {
+          "framework": "netstandard2.1",
           "targetAlias": "netstandard2.1",
           "projectReferences": {}
         }
@@ -2846,10 +2847,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
       "netstandard2.1": {
+        "framework": "netstandard2.1",
         "targetAlias": "netstandard2.1",
         "dependencies": {
           "BepInEx.Analyzers": {
@@ -2887,12 +2889,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "NETStandard.Library.Ref",
+            "version": "[2.1.0, 2.1.0]"
+          }
+        ],
         "frameworkReferences": {
           "NETStandard.Library": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Richard\\.dotnet\\sdk\\9.0.303\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Hollyn\\.dotnet\\sdk\\10.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

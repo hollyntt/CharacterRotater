@@ -11,14 +11,17 @@ namespace Character_Rotater.Patches
         [HarmonyPrefix]
         public static bool InterceptChatCommands(string _message)
         {
+            // End of Support: stop handling commands, let the message through normally.
+            if (Main.IsExpired) return true;
+
             string text = _message.Trim();
-            
+
             // Check if the message starts with our command or its alias.
             if (text.StartsWith("/rotator") || text.StartsWith("/rot"))
             {
                 // Split the message into parts. e.g., "/rot set y 90"
                 string[] parts = text.Split(' ');
-                
+
                 // Create a new array for the arguments, skipping the first part ("/rotator" or "/rot")
                 string[] args = new string[parts.Length - 1];
                 for (int i = 1; i < parts.Length; i++)
